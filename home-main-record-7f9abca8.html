@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 简明指南与访问提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f9fafb;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+        .page-wrap {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        /* hero 区域 — 极简杂志式横幅 */
+        .hero {
+            margin-bottom: 3rem;
+            padding: 3rem 0 1.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+        .hero .subhead {
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 400;
+            border-left: 3px solid #d1d5db;
+            padding-left: 1rem;
+            margin-top: 0.25rem;
+        }
+
+        /* 背景说明 */
+        .bg-note {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.75rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            border: 1px solid #f0f1f3;
+        }
+        .bg-note p {
+            font-size: 1rem;
+            color: #374151;
+            max-width: 600px;
+        }
+        .bg-note .label {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px dashed #d1d5db;
+            padding-bottom: 0.25rem;
+        }
+
+        /* 三段自然介绍 使用卡片式，但留白为主 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .card-item {
+            background: transparent;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .card-item:last-child {
+            border-bottom: none;
+        }
+        .card-item h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        .card-item p {
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin-bottom: 0.4rem;
+        }
+        .card-item .meta {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        /* 引用 / FAQ 摘要 保持克制 */
+        .faq-note {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0 2.5rem 0;
+            border: 1px solid #edeff2;
+        }
+        .faq-note summary {
+            font-weight: 500;
+            cursor: default;
+            color: #1f2937;
+            font-size: 0.95rem;
+            list-style: none;
+        }
+        .faq-note summary::before {
+            content: "▸ ";
+            color: #9ca3af;
+        }
+        .faq-note p {
+            margin-top: 0.6rem;
+            font-size: 0.9rem;
+            color: #6b7280;
+            padding-left: 1rem;
+            border-left: 2px solid #e5e7eb;
+        }
+
+        /* 页尾访问提示 */
+        .footer-access {
+            margin-top: 3rem;
+            padding: 1.5rem 0 1rem 0;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.9rem;
+            color: #4b5563;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+        .footer-access a {
+            color: #1f2937;
+            text-decoration: none;
+            border-bottom: 1px solid #d1d5db;
+            padding-bottom: 1px;
+            font-weight: 450;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .footer-access a:hover {
+            border-bottom-color: #1f2937;
+            color: #111827;
+        }
+        .footer-access .hint {
+            color: #9ca3af;
+            font-size: 0.8rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 600px) {
+            body { padding: 1.5rem 0.75rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero .subhead { font-size: 0.9rem; padding-left: 0.75rem; }
+            .bg-note { padding: 1.25rem; }
+            .card-item h2 { font-size: 1.1rem; }
+            .faq-note { padding: 1rem 1.25rem; }
+            .footer-access { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+        }
+        @media (max-width: 420px) {
+            .hero h1 { font-size: 1.7rem; }
+            .bg-note p { font-size: 0.9rem; }
+        }
+
+        /* 极简辅助 */
+        .quiet-link {
+            color: #6b7280;
+            border-bottom: 1px dotted #d1d5db;
+            text-decoration: none;
+        }
+        .quiet-link:hover { color: #1f2937; }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 首页横幅 hero -->
+    <header class="hero">
+        <h1>开云 · 简明访问指南</h1>
+        <div class="subhead">一份关于如何找到「开云」的温和提醒，以及使用前的小背景。</div>
+    </header>
+
+    <!-- 背景说明 -->
+    <section class="bg-note">
+        <span class="label">背景</span>
+        <p>「开云」是一个提供信息浏览与内容聚合的线上站点。本页整理了几条实用背景与访问建议，帮助你更快了解它的基本定位。以下内容不构成任何承诺或推荐，仅作为客观说明。</p>
+    </section>
+
+    <!-- 三段自然介绍：从简明指南和访问提醒的角度 -->
+    <div class="card-grid">
+
+        <div class="card-item">
+            <h2>① 访问前须知</h2>
+            <p>在开始浏览 <a href="https://home-main-kai-yun.com">开云</a> 之前，建议先确认网络环境稳定，并使用主流浏览器（如 Chrome、Firefox 或 Edge）以获得完整显示。部分功能可能依赖 JavaScript，请保持其处于启用状态。</p>
+            <span class="meta">适用场景：首次访问 / 基础准备</span>
+        </div>
+
+        <div class="card-item">
+            <h2>② 内容与结构特点</h2>
+            <p>该站页面布局偏向简洁，信息层级清晰。首页主要展示导航与分类入口。如果你希望快速定位某类信息，可留意页面顶部的引导区域。所有内容均以中文呈现，更新节奏平稳。</p>
+            <span class="meta">适用场景：日常浏览 / 信息查找</span>
+        </div>
+
+        <div class="card-item">
+            <h2>③ 使用中的注意事项</h2>
+            <p>部分页面可能包含外部链接或交互模块。建议根据自身判断筛选信息。如遇到页面加载延迟，可稍后重试。对任何内容有疑问时，优先参考站点自身的说明或常见问题区域。</p>
+            <span class="meta">适用场景：深度使用 / 信息核验</span>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 保持自然，不啰嗦 -->
+    <div class="faq-note">
+        <summary>一些常见疑问摘要</summary>
+        <p>Q: 是否需要注册或登录？<br>A: 根据目前公开页面，多数内容可直接浏览，无需账户。具体以实际页面提示为准。</p>
+        <p>Q: 移动端体验如何？<br>A: 页面已适配响应式布局，在手机和平板上可正常阅读，部分交互区域可能需要横向滚动。</p>
+    </div>
+
+    <!-- 页尾访问提示（含链接） -->
+    <footer class="footer-access">
+        <span>想直接前往？这是 <a href="https://home-main-kai-yun.com">开云</a> 的地址。</span>
+        <span class="hint">请根据自身判断使用 · 保持理性探索</span>
+    </footer>
+
+    <!-- 极简分隔，无多余内容 -->
+</div>
+</body>
+</html>
